@@ -1,0 +1,4 @@
+const menu=document.querySelector('.menu'),nav=document.querySelector('#nav');menu?.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));nav.classList.toggle('open',open)});const form=document.querySelector('[data-preview]');if(form){const v=new URLSearchParams(location.search).get('servico'),s=form.elements.servico;if(v&&[...s.options].some(o=>o.value===v))s.value=v;form.addEventListener('submit',e=>{e.preventDefault();const d=new FormData(form),out=form.querySelector('.summary');out.hidden=false;out.querySelector('pre').textContent=`Serviço: ${d.get('servico')}
+Veículo: ${d.get('veiculo')}
+Ano: ${d.get('ano')||'Por confirmar'}
+Descrição: ${d.get('descricao')}`;out.scrollIntoView({block:'nearest',behavior:'smooth'})})}
